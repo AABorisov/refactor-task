@@ -1,4 +1,5 @@
 import React from 'react';
+import './AddMoreButton.css';
 
 interface AddMoreButtonProps {
     onClick: () => void;

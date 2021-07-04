@@ -1,6 +1,7 @@
 import React from 'react';
-import {IPostItem} from "../models/IPostItem";
+import {IPostItem} from "../../models/IPostItem";
 import PostItem from "./PostItem";
+import './PostList.css';
 
 interface PostListProps {
     postList: Array<IPostItem>;

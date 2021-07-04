@@ -1,18 +1,20 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import { IPostItem } from "./models/IPostItem";
 import {createList} from "./helpers/createList";
-import {ListItem} from "./models/ListItem";
-import logo from './logo.svg';
+import PostList from "./components/PostList";
+import AddMoreButton from "./components/AddMoreButton";
+import Header from "./components/Header";
 import './App.css';
 
-function App() {
-    // d - List of items that can be updated with new additional items when the button is pressed
-    const [itemsList, setItemsList] = React.useState<Array<ListItem>>([])
+function App(): JSX.Element {
+    // postList - List of items that can be updated with new additional items when the button is pressed
+    const [postList, setPostList] = useState<Array<IPostItem>>([])
 
     const fill = () => {
         // The function fills the list for render with some items
-        const newList: Array<ListItem> = createList(itemsList.length, 20);
+        const newList: Array<IPostItem> = createList(postList.length, 20);
 
-        setItemsList(itemsList => [...itemsList, ...newList])
+        setPostList(postList => [...postList, ...newList])
     }
 
     useEffect(() => {
@@ -20,27 +22,11 @@ function App() {
         fill();
     }, []);
 
-    const render = () => {
-        // renders the list of items as components
-
-        return itemsList.map((i, index) =>  {
-            return (<div className={'App-item'} key={i.title}>{'Title is:' + i.title + '!'}</div>);
-        })
-    }
-
     return (
         <div className="App">
-            <div className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-            </div>
-            <div>
-                <button className={"App-button"} onClick={fill}>
-                    Add More
-                </button>
-            </div>
-            <div>
-                {render()}
-            </div>
+            <Header />
+            <AddMoreButton onClick={fill} />
+            <PostList postList={postList} />
         </div>
     );
 }

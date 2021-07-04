@@ -1,10 +1,8 @@
-
-interface ListItem {
+interface IPostItem {
     id: number;
     title: string;
 }
 
-
 export type {
-    ListItem
+    IPostItem
 }

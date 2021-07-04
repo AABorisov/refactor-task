@@ -1,8 +1,8 @@
-import {ListItem} from "../models/ListItem";
+import {IPostItem} from "../models/IPostItem";
 
 const CHARS_STRING = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-export function createList (startIndex: number = 0, length: number = 20): Array<ListItem> {
+export function createList (startIndex: number = 0, length: number = 20): Array<IPostItem> {
     return new Array(length).fill('').map((_, index) => {
         return {
             id: startIndex + index,

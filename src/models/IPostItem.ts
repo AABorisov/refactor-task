@@ -1,8 +1,6 @@
 interface IPostItem {
-    id: number;
-    title: string;
+  id: number;
+  title: string;
 }
 
-export type {
-    IPostItem
-}
+export type { IPostItem };
